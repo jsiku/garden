@@ -56,6 +56,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # 7) 디버그
+      - name: Debug - check logseq knowledge folder
+        run: |
+          echo "---- list knowledge ----"
+          ls -la /tmp/logseq_notes/public || true
+          ls -la /tmp/logseq_notes/public/knowledge || true
+          echo "---- find markdown ----"
+          find /tmp/logseq_notes/public/knowledge -maxdepth 3 -type f | head -n 200
+          echo "---- count md ----"
+          find /tmp/logseq_notes/public/knowledge -type f -name "*.md" | wc -l
+
       # 7) Quartz 빌드: logseq의 public/knowledge를 콘텐츠로 사용
       - name: Build Quartz (from logseq public/knowledge)
         run: npx quartz build -d /tmp/logseq_notes/public/knowledge
