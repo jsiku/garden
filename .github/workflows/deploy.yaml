@@ -67,24 +67,6 @@ jobs:
           echo "---- count md ----"
           find /tmp/logseq_notes/public/knowledge -type f -name "*.md" | wc -l
 
-      # 7) 임시 인덱스 파일 생성 및 콘텐츠 준비 (logseq의 public/knowledge를 quartz 빌드용 콘텐츠로 복사)
-      - name: Prepare content folder
-        run: |
-          rm -rf /tmp/quartz_content
-          mkdir -p /tmp/quartz_content
-          rsync -a /tmp/logseq_notes/public/knowledge/ /tmp/quartz_content/
-
-          if [ ! -f /tmp/quartz_content/index.md ]; then
-            cat > /tmp/quartz_content/index.md <<'EOF'
----
-title: Home
----
-# Garden
-
-Welcome.
-EOF
-          fi
-
       # 7) Quartz 빌드: logseq의 public/knowledge를 콘텐츠로 사용
       - name: Build Quartz (from logseq public/knowledge)
         run: npx quartz build -d /tmp/logseq_notes/public/knowledge
