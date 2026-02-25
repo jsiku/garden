@@ -1,3 +1,3 @@
 [submodule "content-src"]
 	path = content-src
-	url = https://github.com/jsiku/logseq_personal_notes.git
+	url = git@github.com:jsiku/logseq_personal_notes.git
