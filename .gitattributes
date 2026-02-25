@@ -1,1 +1,2 @@
 * text=auto eol=lf
+.github/workflows/deploy.yaml merge=ours
