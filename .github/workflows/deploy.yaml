@@ -18,25 +18,30 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-22.04
+
     steps:
-      # 1) Load SSH key FIRST (needed for private submodule over SSH)
-      - name: Setup SSH agent
+      - name: Setup SSH agent (for private submodule)
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
-      # 2) Avoid host verification prompts (safe + common)
       - name: Add github.com to known_hosts
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      # 3) Now checkout repo + submodules
-      - name: Checkout repository (with submodules)
+      # 중요: checkout이 submodule auth를 건드리지 못하게 submodules: false
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: recursive
+          submodules: false
+
+      # 중요: ssh-agent가 로드된 상태에서 우리가 직접 submodule 받기
+      - name: Sync & update submodules (SSH)
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --recursive
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -46,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Quartz (use knowledge folder)
+      - name: Build Quartz (knowledge folder)
         run: npx quartz build -d content-src/public/knowledge
 
       - name: Upload artifact
@@ -60,6 +65,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
