@@ -1,9 +1,6 @@
 name: Deploy Quartz site to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -20,40 +17,50 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Setup SSH agent (for private submodule)
+      # 1) SSH 키 로드 (private logseq repo clone용)
+      - name: Setup SSH agent (for private logseq clone)
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
+      # 2) github.com host key 등록 (SSH host verification 문제 방지)
       - name: Add github.com to known_hosts
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      # 중요: checkout이 submodule auth를 건드리지 못하게 submodules: false
-      - name: Checkout repository
+      # 3) garden repo 자체만 체크아웃
+      - name: Checkout garden repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: false
 
-      # 중요: ssh-agent가 로드된 상태에서 우리가 직접 submodule 받기
-      - name: Sync & update submodules (SSH)
+      # 4) private logseq repo를 임시 폴더로 최신만 clone
+      - name: Clone logseq notes (private)
         run: |
-          git submodule sync --recursive
-          git submodule update --init --recursive
+          git clone --depth 1 git@github.com:jsiku/logseq_personal_notes.git /tmp/logseq_notes
 
+      # (선택) 어떤 logseq 커밋으로 빌드했는지 로그에 남기기
+      - name: Show logseq commit
+        run: |
+          cd /tmp/logseq_notes
+          echo "LOGSEQ_COMMIT=$(git rev-parse HEAD)"
+
+      # 5) Node 설치
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
+      # 6) 의존성 설치
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Quartz (knowledge folder)
-        run: npx quartz build -d content-src/public/knowledge
+      # 7) Quartz 빌드: logseq의 public/knowledge를 콘텐츠로 사용
+      - name: Build Quartz (from logseq public/knowledge)
+        run: npx quartz build -d /tmp/logseq_notes/public/knowledge
 
+      # 8) Pages로 올릴 산출물 업로드
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
