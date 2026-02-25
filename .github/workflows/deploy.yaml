@@ -24,6 +24,7 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive # 🔥 private submodule 지원
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
