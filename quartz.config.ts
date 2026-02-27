@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "WikiJsiku",
+    pageTitle: "Jsiku DG",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "ko-KR",
     baseUrl: "wiki.jsiku.org",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "logseq", "bak"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -28,9 +28,10 @@ const config: QuartzConfig = {
         code: "IBM Plex Mono",
       },
       colors: {
+        // ZSA 스타일의 기본 화이트 모드 색감
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
+          light: "#ffffff", // 전체 배경 (화이트)
+          lightgray: "#f4f4f5", // 메인 컨테이너 및 태그 배경 (약간 다른 톤)
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
@@ -39,16 +40,17 @@ const config: QuartzConfig = {
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
+        // 로그시크 스타일의 아주 짙은 녹색 다크모드
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#002b36", // 로그시크 특유의 짙은 녹색/청록색 배경
+          lightgray: "#073642", // 메인 컨테이너 (약간 더 밝은 녹색 톤)
+          gray: "#586e75",
+          darkgray: "#839496",
+          dark: "#eee8d5",
+          secondary: "#2aa198",
+          tertiary: "#268bd2",
+          highlight: "rgba(42, 161, 152, 0.15)",
+          textHighlight: "#b5890088",
         },
       },
     },
