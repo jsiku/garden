@@ -1,12 +1,13 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import ProfileImage from "./quartz/components/ProfileImage" // 커스텀 이미지 컴포넌트 불러오기
+import ProfileImage from "./quartz/components/ProfileImage" // 커스텀 이미지 컴포넌트 불러오기, custom component
+import GlobalTagList from "./quartz/components/GlobalTagList" // 글로벌 태그 리스트 컴포넌트 불러오기, custom component
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [], // 💡 이 부분이 누락되어 발생한 에러입니다. 복구 완료!
+  afterBody: [],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jsiku",
@@ -18,6 +19,10 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.TagList(),
+    Component.ConditionalRender({
+      component: GlobalTagList(),
+      condition: (page) => page.fileData.slug === "index", // 대문에서만 표시
+    }),
     Component.ArticleTitle(),
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
