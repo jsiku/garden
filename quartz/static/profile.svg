@@ -1,0 +1,39 @@
+<svg
+  width="100%"
+  viewBox="0 0 400 200"
+  xmlns="http://www.w3.org/2000/svg"
+  style="border-radius: 8px; background-color: var(--lightgray); box-shadow: 0 4px 6px rgba(0,0,0,0.05);"
+>
+  {/* 1. 추상적인 컨테이너 (컵을 암시하는 열린 테두리) */}
+  <path
+    d="M 120 40 L 140 160 Q 200 180 260 160 L 280 40"
+    fill="none"
+    stroke="var(--gray)"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    opacity="0.5"
+  />
+
+  {/* 2. 내부에 담긴 추상적 도형들 (얼음을 암시) */}
+  <g transform="translate(200, 110)">
+    {/* 첫 번째 얼음 조각 (기울어진 사각형과 테두리 엇갈림 효과) */}
+    <rect x="-45" y="-35" width="48" height="48" rx="6" fill="var(--secondary)" opacity="0.6" transform="rotate(15)" />
+    <rect x="-40" y="-30" width="48" height="48" rx="6" fill="none" stroke="var(--light)" stroke-width="2" transform="rotate(15)" opacity="0.5" />
+
+    {/* 두 번째 얼음 조각 (더 크고 깊이가 다른 사각형) */}
+    <rect x="-10" y="-70" width="55" height="55" rx="8" fill="var(--tertiary)" opacity="0.5" transform="rotate(-22)" />
+    <rect x="-5" y="-65" width="55" height="55" rx="8" fill="none" stroke="var(--light)" stroke-width="2" transform="rotate(-22)" opacity="0.7" />
+
+    {/* 세 번째 얼음 조각 (불규칙한 다각형으로 녹아내리거나 겹친 느낌) */}
+    <polygon points="10,5 45,-15 55,20 20,35" fill="var(--darkgray)" opacity="0.3" />
+
+    {/* 떠오르는 기포 또는 물방울을 암시하는 원형 도형들 */}
+    <circle cx="-25" cy="20" r="10" fill="var(--tertiary)" opacity="0.7" />
+    <circle cx="30" cy="15" r="6" fill="var(--secondary)" opacity="0.9" />
+    <circle cx="5" cy="-25" r="4" fill="var(--dark)" opacity="0.4" />
+  </g>
+
+  {/* 3. 수면의 파동 또는 시각적 포인트를 주는 가로선 */}
+  <path d="M 145 90 Q 200 115 255 90" fill="none" stroke="var(--tertiary)" stroke-width="2" stroke-dasharray="6 6" opacity="0.4" />
+  <path d="M 165 55 Q 200 70 235 55" fill="none" stroke="var(--secondary)" stroke-width="1.5" opacity="0.3" />
+</svg>
