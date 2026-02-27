@@ -1,10 +1,8 @@
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { jsx } from "preact/jsx-runtime"
+import { QuartzComponentConstructor } from "./types"
 
 export default (() => {
-  function ProfileImage(props: QuartzComponentProps) {
+  function ProfileImage() {
     return (
-      // style 속성을 TypeScript/JSX 표준인 객체(Object) 형태로 수정했습니다.
       <div
         class="profile-image-container"
         style={{ marginBottom: "0.5rem", display: "inline-block", width: "100%" }}
@@ -13,12 +11,9 @@ export default (() => {
           width="100%"
           viewBox="90 30 220 160"
           xmlns="http://www.w3.org/2000/svg"
-          style={{
-            borderRadius: "8px",
-            display: "block",
-          }}
+          style={{ borderRadius: "8px", display: "block" }}
         >
-          {/* 1. 컵 윤곽선 (stroke-width를 strokeWidth로, stroke-linecap을 strokeLinecap으로 수정) */}
+          {/* 1. 컵 윤곽선 */}
           <path
             d="M 120 40 L 140 160 Q 200 180 260 160 L 280 40"
             fill="none"
@@ -83,7 +78,7 @@ export default (() => {
             <circle cx="5" cy="-25" r="4" fill="var(--dark)" opacity="0.7" />
           </g>
 
-          {/* 3. 수면의 파동 (stroke-dasharray를 strokeDasharray로 수정) */}
+          {/* 3. 수면의 파동 */}
           <path
             d="M 145 90 Q 200 115 255 90"
             fill="none"

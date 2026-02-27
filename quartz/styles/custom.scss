@@ -1,7 +1,59 @@
 @use "./base.scss";
 
 // put your custom CSS here!
-.section ul.tags {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+
+.center {
+  background-color: var(--lightgray);
+}
+
+.page-header ul.tags {
+  li {
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    a {
+      color: var(--secondary);
+    }
+  }
+}
+
+.explorer {
+  text-align: right !important;
+  ul,
+  li,
+  button {
+    text-align: right;
+    justify-content: flex-start;
+  }
+}
+
+/* 1. 이미지 컨테이너와 페이지 타이틀 링크의 기준점 설정 */
+.profile-image-container,
+h1.page-title a,
+h2.page-title a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none !important; /* 기본 밑줄 제거 */
+}
+
+/* 2. 가상의 밑줄 요소 생성 (기본 상태: 너비 0, 우측 고정) */
+.profile-image-container::after,
+h1.page-title a::after,
+h2.page-title a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px; /* 밑줄의 두께 */
+  bottom: -6px; /* 이미지/글자와 밑줄 사이의 간격 */
+  right: 0; /* 우측부터 시작하도록 고정 */
+  background-color: var(--secondary); /* 강조 색상 (원하시면 var(--tertiary) 등으로 변경 가능) */
+  transition: width 0.35s ease-out; /* 0.35초 동안 부드럽게 너비가 변하는 애니메이션 */
+  border-radius: 2px;
+}
+
+/* 3. 마우스 오버 시 밑줄 너비를 100%로 확장 (우측에서 좌측으로 길어짐) */
+.profile-image-container:hover::after,
+h1.page-title a:hover::after,
+h2.page-title a:hover::after {
+  width: 100%;
+  left: auto;
 }
