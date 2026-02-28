@@ -41,8 +41,8 @@ export default (() => {
     )
   }
 
-  /* 4. 컴포넌트 전용 CSS 스타일 (여백 조정)
-  GlobalTagList.css = `.customMargin { margin-top: 1rem !important; }` */
+  //4. 컴포넌트 전용 CSS 스타일 (여백 조정)
+  GlobalTagList.css = `.global-tag-list.section h3 {margin-bottom: 1rem !important;}`
 
   return GlobalTagList
 }) satisfies QuartzComponentConstructor

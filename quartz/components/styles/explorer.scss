@@ -65,6 +65,7 @@
 
   button.desktop-explorer {
     display: flex;
+    justify-content: flex-end;
   }
 
   @media all and ($mobile) {
@@ -165,6 +166,7 @@ button.desktop-explorer {
   display: flex;
   align-items: center;
   user-select: none;
+  justify-content: flex-end; /* 💡 요소들을 컨테이너의 오른쪽 끝으로 밀어서 정렬합니다. */
 
   & div > a {
     color: var(--secondary);
@@ -245,7 +247,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       z-index: 100;
       position: absolute;
       top: 0;
-      left: 0;
+      left: -2rem;
       margin-top: 0;
       background-color: var(--light);
       max-width: 100vw;
