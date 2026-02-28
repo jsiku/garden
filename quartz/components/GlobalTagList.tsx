@@ -1,8 +1,11 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { getAllSegmentPrefixes } from "../util/path"
+// 💡 classNames 유틸리티를 불러옵니다.
+import { classNames } from "../util/lang"
 
 export default (() => {
-  const GlobalTagList: QuartzComponent = ({ allFiles }: QuartzComponentProps) => {
+  // 💡 props에서 allFiles뿐만 아니라 displayClass도 함께 가져옵니다.
+  const GlobalTagList: QuartzComponent = ({ allFiles, displayClass }: QuartzComponentProps) => {
     // 1. 사이트 내 모든 파일(allFiles)에서 태그를 추출하고 중복을 제거 및 정렬합니다.
     const tags = [
       ...new Set(
@@ -17,7 +20,8 @@ export default (() => {
 
     // 3. 화면에 출력될 HTML(JSX) 구조입니다.
     return (
-      <div class="global-tag-list section">
+      // 💡 최상위 div의 class에 displayClass를 결합하여 숨김 처리가 작동하도록 합니다.
+      <div class={classNames(displayClass, "global-tag-list section")}>
         <ul class="tags">
           {tags.map((tag) => (
             <li>
@@ -31,13 +35,13 @@ export default (() => {
     )
   }
 
-  // 4. 컴포넌트 전용 CSS 스타일 (여백 조정)
+  /* 4. 컴포넌트 전용 CSS 스타일 (여백 조정)
   GlobalTagList.css = `
   .global-tag-list {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
   }
-  `
+  `*/
 
   return GlobalTagList
 }) satisfies QuartzComponentConstructor

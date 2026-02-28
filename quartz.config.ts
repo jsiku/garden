@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
-    locale: "ko-KR",
+    locale: "en-US",
     baseUrl: "wiki.jsiku.org",
     ignorePatterns: ["private", "templates", ".obsidian", "logseq", "bak"],
     defaultDateType: "modified",

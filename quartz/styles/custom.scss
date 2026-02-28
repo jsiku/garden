@@ -1,9 +1,34 @@
 @use "./base.scss";
 
+@use "./variables.scss" as *;
+
 // put your custom CSS here!
 
 .center {
   background-color: var(--lightgray);
+  margin-top: $topSpacing;
+  border-radius: 2rem;
+}
+
+.page-header {
+  margin-top: 0 !important;
+}
+
+.popover-hint {
+  padding: 0 2rem 0 2rem;
+}
+
+.sidebar,
+.sidebar * {
+  /* Firefox */
+  scrollbar-width: none !important;
+  /* IE 및 구형 Edge */
+  -ms-overflow-style: none !important;
+
+  /* Chrome, Safari, 최신 Edge */
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 }
 
 .page-header ul.tags {
