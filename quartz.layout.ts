@@ -5,14 +5,7 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [
-    Component.MobileOnly(
-      Component.ConditionalRender({
-        component: Component.GlobalTagList(),
-        condition: (page) => page.fileData.slug === "index",
-      }),
-    ),
-  ],
+  afterBody: [Component.MobileOnly(Component.GlobalTagList())],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jsiku/garden",
@@ -82,18 +75,40 @@ export const defaultContentPageLayout: PageLayout = {
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
-    Component.PageTitle(),
+    // for Mobile
+    Component.MobileOnly(Component.PageTitle()),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
+    Component.MobileOnly(
+      Component.Flex({
+        components: [
+          {
+            Component: Component.Search(),
+            grow: true,
+          },
+          { Component: Component.Darkmode() },
+          { Component: Component.ReaderMode() },
+        ],
+      }),
+    ),
+    // all views
     Component.Explorer(),
+    // for Desktop
   ],
-  right: [],
+  right: [
+    // for Desktop
+    //Component.DesktopOnly(Component.ProfileImage()),
+    Component.DesktopOnly(Component.PageTitle()),
+    Component.DesktopOnly(
+      Component.Flex({
+        components: [
+          {
+            Component: Component.Search(),
+            grow: true,
+          },
+          { Component: Component.Darkmode() },
+          { Component: Component.ReaderMode() },
+        ],
+      }),
+    ),
+  ],
 }

@@ -1,0 +1,40 @@
+@use "../../styles/variables.scss" as *;
+
+.global-tag-list.section {
+  /* 기본 (데스크탑) 설정: 오른쪽 정렬 */
+  /* 💡 display: flex; 이 줄을 지워주세요! (TSX의 flex-component가 대신 작동합니다) */
+  flex-direction: column;
+  align-items: flex-end; /* 제목 컨테이너 오른쪽 정렬 */
+
+  h3 {
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* 태그 항목들 오른쪽 정렬 */
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      margin: 0; /* Quartz 기본 li 여백 초기화 */
+    }
+  }
+
+  /* 모바일 화면 (800px 이하) 설정: 왼쪽 정렬 */
+  @media all and ($mobile) {
+    align-items: flex-start; /* 제목 컨테이너 왼쪽 정렬 */
+
+    h3 {
+      text-align: left;
+    }
+
+    .tags {
+      justify-content: flex-start; /* 태그 항목들 왼쪽 정렬 */
+    }
+  }
+}
