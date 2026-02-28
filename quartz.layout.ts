@@ -4,14 +4,7 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [
-    Component.DesktopOnly(
-      Component.ConditionalRender({
-        component: Component.GlobalTagList(),
-        condition: (page) => page.fileData.slug === "index",
-      }),
-    ),
-  ],
+  header: [],
   afterBody: [
     Component.MobileOnly(
       Component.ConditionalRender({
@@ -22,8 +15,7 @@ export const sharedPageComponents: SharedLayout = {
   ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/jsiku/garden",
     },
   }),
 }
@@ -40,8 +32,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    // for Desktp
-    Component.DesktopOnly(Component.Graph()),
     // for Mobile
     Component.MobileOnly(Component.PageTitle()),
     Component.MobileOnly(Component.Spacer()),
@@ -59,10 +49,12 @@ export const defaultContentPageLayout: PageLayout = {
     ),
     // all views
     Component.Explorer(),
+    // for Desktop
+    Component.DesktopOnly(Component.GlobalTagList()),
   ],
   right: [
     // for Desktop
-    Component.DesktopOnly(Component.ProfileImage()),
+    //Component.DesktopOnly(Component.ProfileImage()),
     Component.DesktopOnly(Component.PageTitle()),
     Component.DesktopOnly(
       Component.Flex({
@@ -81,6 +73,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Graph()),
     // all views
     Component.Backlinks(),
+    // for Desktop
+    Component.DesktopOnly(Component.Graph()),
   ],
 }
 

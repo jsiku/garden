@@ -56,6 +56,9 @@ export default {
     tableOfContents: {
       title: "Table of Contents",
     },
+    taglist: {
+      title: "Tags",
+    },
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,
     },
