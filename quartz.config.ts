@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "wiki.jsiku.org",
+    baseUrl: "https://jsiku.github.io/garden/",
     ignorePatterns: ["private", "templates", ".obsidian", "logseq", "bak"],
     defaultDateType: "modified",
     theme: {

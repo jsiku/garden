@@ -38,7 +38,7 @@ jobs:
       # 4) private  repo를 임시 폴더로 최신만 clone
       - name: Clone  notes (private)
         run: |
-          git clone --depth 1 git@github.com:jsiku/personal_notes.git /tmp/notes
+          git clone --depth 1 git@github.com:jsiku/hub.git /tmp/notes
 
       # (선택) 어떤  커밋으로 빌드했는지 로그에 남기기
       - name: Show  commit
@@ -56,9 +56,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 7) Quartz 빌드: public/knowledge를 콘텐츠로 사용
-      - name: Build Quartz (from  public/knowledge)
-        run: npx quartz build -d /tmp/notes/public/knowledge
+      # 7) Quartz 빌드: vault/public/knowledge를 콘텐츠로 사용
+      - name: Build Quartz (from  vault/public/knowledge)
+        run: npx quartz build -d /tmp/notes/vault/public/knowledge
 
       # 8) Pages로 올릴 산출물 업로드
       - name: Upload artifact
