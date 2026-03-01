@@ -3,11 +3,7 @@ import { classNames } from "../util/lang"
 
 const ProfileImage: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
   return (
-    <div
-      // 💡 displayClass를 통해 DesktopOnly / MobileOnly의 숨김 처리가 정상 작동하게 됩니다.
-      class={classNames(displayClass)}
-      // 💡 기존에 있던 display: "inline-block"을 삭제하여 CSS 우선순위 충돌을 해결했습니다.
-    >
+    <div class={classNames(displayClass)}>
       <svg
         width="100%"
         viewBox="90 30 220 160"

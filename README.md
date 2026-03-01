@@ -8,7 +8,7 @@ This repository is a personal Digital Garden built on [Quartz v4](https://quartz
 
 - Instead of a simple image insertion, a dedicated custom component (`Profile.tsx`) utilizing SVG was created and applied to represent the site's identity, resulting in a more personalized and optimized UI.
 
-### 🧩 2. Custom Component Development: `GlobalTagList.tsx`
+### 🧩 2. Custom Component : `GlobalTagList.tsx` `Profile.tsx`)
 
 Directly implemented and layout-optimized the `GlobalTagList.tsx` component, which gathers and displays all tags within the site.
 

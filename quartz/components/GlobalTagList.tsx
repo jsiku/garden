@@ -5,8 +5,6 @@ import { getAllSegmentPrefixes } from "../util/path"
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 
-// 💡 1. 별도로 만든 SCSS 파일을 불러옵니다.
-
 export default (() => {
   const GlobalTagList: QuartzComponent = ({
     allFiles,
@@ -39,7 +37,6 @@ export default (() => {
     )
   }
 
-  // 💡 2. import한 스타일을 컴포넌트의 CSS 속성에 할당합니다.
   GlobalTagList.css = style
 
   return GlobalTagList

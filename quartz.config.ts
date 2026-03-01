@@ -68,7 +68,6 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      Plugin.HardLineBreaks(),
       Plugin.RoamFlavoredMarkdown(),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
