@@ -12,6 +12,9 @@ header {
   background-color: var(--lightgray);
   margin-top: $topSpacing;
   border-radius: 2rem;
+  @media all and ($mobile) {
+    margin-top: 0;
+  }
 }
 
 .page-header {
