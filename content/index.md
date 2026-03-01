@@ -1,10 +1,10 @@
 ---
-title: Welcome to My Digital Garden
+title: Welcome to My Garden
 date: 2026-03-01
 tags: [intro]
 ---
 
-이곳은 저의 파편화된 생각, 개인적인 메모들을 모은 Digital Garden입니다.
+여기는 저의 파편화된 생각, 개인적인 메모들을 모은 Digital Garden입니다.
 
 정제되고 완벽한 글을 쓰는 곳이 아니며, 머릿속에 떠오르는 불완전한 아이디어들을 덤담기 위한 저장소에 가깝습니다.
 
