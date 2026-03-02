@@ -1,0 +1,29 @@
+@use "../../styles/variables.scss" as *;
+
+.GlobalTags {
+  flex-direction: column;
+
+  & > h3 {
+    font-size: 1rem;
+    margin: 0 0 0.6rem 0;
+  }
+
+  & > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  & > ul > li {
+    white-space: nowrap;
+  }
+
+  & a.internal.tag-link {
+    border-radius: 8px;
+    background-color: var(--highlight);
+    padding: 0.2rem 0.4rem;
+  }
+}

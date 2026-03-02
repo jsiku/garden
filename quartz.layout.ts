@@ -5,7 +5,7 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [Component.MobileOnly(Component.GlobalTagList())],
+  afterBody: [],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jsiku/garden",
@@ -25,6 +25,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
+    Component.DesktopOnly(Component.Graph()),
     // for Mobile
     Component.MobileOnly(Component.PageTitle()),
     Component.MobileOnly(Component.Spacer()),
@@ -42,8 +43,6 @@ export const defaultContentPageLayout: PageLayout = {
     ),
     // all views
     Component.Explorer(),
-    // for Desktop
-    Component.DesktopOnly(Component.GlobalTagList()),
   ],
   right: [
     // for Desktop
@@ -63,11 +62,9 @@ export const defaultContentPageLayout: PageLayout = {
     ),
     Component.DesktopOnly(Component.TableOfContents()),
     // for Mobile
-    Component.MobileOnly(Component.Graph()),
     // all views
     Component.Backlinks(),
-    // for Desktop
-    Component.DesktopOnly(Component.Graph()),
+    Component.GlobalTagList(),
   ],
 }
 

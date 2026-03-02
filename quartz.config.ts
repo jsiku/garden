@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Jsiku DG",
+    pageTitle: "JsikuDG",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,8 +16,8 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "https://jsiku.github.io/garden/",
-    ignorePatterns: ["private", "templates", ".obsidian", "logseq", "bak"],
+    baseUrl: "jsiku.github.io/garden",
+    ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -28,7 +28,6 @@ const config: QuartzConfig = {
         code: "IBM Plex Mono",
       },
       colors: {
-        // ZSA 스타일의 기본 화이트 모드 색감
         lightMode: {
           light: "#ffffff", // 전체 배경 (화이트)
           lightgray: "#f4f4f5", // 메인 컨테이너 및 태그 배경 (약간 다른 톤)
@@ -40,9 +39,8 @@ const config: QuartzConfig = {
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
-        // 로그시크 스타일의 아주 짙은 녹색 다크모드
         darkMode: {
-          light: "#002b36", // 로그시크 특유의 짙은 녹색/청록색 배경
+          light: "#002b36", // 짙은 녹색/청록색 배경
           lightgray: "#073642", // 메인 컨테이너 (약간 더 밝은 녹색 톤)
           gray: "#586e75",
           darkgray: "#839496",

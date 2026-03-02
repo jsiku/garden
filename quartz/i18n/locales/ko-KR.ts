@@ -56,9 +56,6 @@ export default {
     tableOfContents: {
       title: "목차",
     },
-    taglist: {
-      title: "태그 목록",
-    },
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,
     },

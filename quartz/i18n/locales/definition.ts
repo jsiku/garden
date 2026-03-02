@@ -41,6 +41,9 @@ export interface Translation {
     footer: {
       createdWith: string
     }
+    GlobalTagList: {
+      title: string
+    }
     graph: {
       title: string
     }
@@ -57,9 +60,6 @@ export interface Translation {
       searchBarPlaceholder: string
     }
     tableOfContents: {
-      title: string
-    }
-    taglist: {
       title: string
     }
     contentMeta: {

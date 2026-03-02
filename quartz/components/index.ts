@@ -23,8 +23,7 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
-import ProfileImage from "./ProfileImage"
-import GlobalTagList from "./GlobalTagList"
+import GlobalTagList from "./GlobalTaglist"
 
 export {
   ArticleTitle,
@@ -52,6 +51,5 @@ export {
   Comments,
   Flex,
   ConditionalRender,
-  ProfileImage,
   GlobalTagList,
 }

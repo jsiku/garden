@@ -38,6 +38,9 @@ export default {
     footer: {
       createdWith: "Created with",
     },
+    GlobalTagList: {
+      title: "Tags",
+    },
     graph: {
       title: "Graph View",
     },
@@ -55,9 +58,6 @@ export default {
     },
     tableOfContents: {
       title: "Table of Contents",
-    },
-    taglist: {
-      title: "Tags",
     },
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,
