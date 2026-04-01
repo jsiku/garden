@@ -19,7 +19,7 @@ jobs:
     steps:
       # 1) SSH 키 로드 (private  repo clone용)
       - name: Setup SSH agent (for private  clone)
-        uses: webfactory/ssh-agent@v0.9.1
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
@@ -76,4 +76,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
